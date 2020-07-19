@@ -29,12 +29,17 @@ nnoremap Y y$
 " Delete comment character(s) when joining commented lines
 set formatoptions+=j
 
+" Move between tabs
+nnoremap <silent> <F1> :bprev!<CR>
+nnoremap <silent> <F2> :bnext!<CR>
+inoremap <silent> <F1> <ESC>:bprev!<CR>
+inoremap <silent> <F2> <ESC>:bnext!<CR>
+
+nnoremap <silent> <F3> :buffers<CR>:buffer<SPACE>
+inoremap <silent> <F3> :buffers<CR>:buffer<SPACE>
+
 " Move based on display lines
 noremap <silent> k gk
 noremap <silent> j gj
 noremap <silent> 0 g0
 noremap <silent> $ g$
-
-" Try not to use escape
-inoremap jk <Esc>
-inoremap kj <Esc>

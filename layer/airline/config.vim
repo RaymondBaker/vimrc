@@ -7,8 +7,8 @@ let g:airline_detect_spelllang = 0
 
 " Custom tabline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 3
+let g:airline#extensions#tabline#show_buffers = 10
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#show_close_button = 0

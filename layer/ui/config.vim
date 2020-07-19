@@ -90,9 +90,6 @@ endif
 " Idle time before CursorHold is sent
 set updatetime=1000
 
-" 80 column
-let &colorcolumn="101,101"
-
 " Enter in the quickfix window doesn't focus the new buffer.
 " This is convenient for quickly looking at code and following the
 " quickfix buffer without having to manually switch back.
