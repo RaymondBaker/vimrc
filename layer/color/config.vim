@@ -29,6 +29,7 @@ let g:rainbow_conf =
 \        'start=/{/ end=/}/ fold'
 \      ],
 \    },
+\    'cmake': 0,
 \  }
 \}
 
