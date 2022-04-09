@@ -1,0 +1,1 @@
+Plug 'alaviss/nim.nvim'
