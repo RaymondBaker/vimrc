@@ -49,6 +49,8 @@ nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
 
+nnoremap <F4> :NERDTreeToggle<CR>
+
 " Font
 let os = substitute(system('uname'), "\n", "", "")
 if os != "Darwin"
