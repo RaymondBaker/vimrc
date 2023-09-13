@@ -34,8 +34,8 @@ let g:ctrlp_open_multiple_files = 't'
 let g:ctrlp_follow_symlinks = 1
 
 " Use a faster matcher for CtrlP
-if !has('python')
-  echo 'In order to use pymatcher plugin, you need +python compiled vim'
+if !has("python3")
+  echo 'In order to use pymatcher plugin, you need +python compiled vim and pynim in the path'
 else
   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 endif
