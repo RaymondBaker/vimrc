@@ -40,8 +40,9 @@ else
   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 endif
 
+
 " Ignore files in .gitignore
-let g:ctrlp_user_command = ['.git', 'cd %s; git ls-files . -co --exclude-standard; for submodule in $(git submodule status | sed "s/[ +]\S\+ \(\S\+\).*/\1/"); do cd "$submodule"; git ls-files . -co --exclude-standard | sed "s#^#$submodule/#"; cd "$OLDPWD"; done', 'find %s -type f']
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " Keep file cache between sessions
 let g:ctrlp_clear_cache_on_exit = 0
@@ -61,7 +62,7 @@ let g:ackhighlight = 0
 " Disable terminal output of ag as it runs
 set shellpipe=>
 
-nnoremap <C-f> :Ack! 
+nnoremap <C-f> :Ack!
 
 " Count word occurrences in a file
 map ,* *<C-O>:%s///gn<CR>
