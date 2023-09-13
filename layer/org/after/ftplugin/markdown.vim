@@ -1,4 +1,6 @@
-nmap <buffer> <CR> ge
+" use coc-marksman gd to follow links
+":CocInstall @yaegassy/coc-marksman
+nmap <buffer> <CR> gd
 
 " Make link entry
 xmap <buffer> <Leader>ml S]%a()<ESC>i
