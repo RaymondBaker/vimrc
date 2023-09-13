@@ -50,9 +50,8 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 
 nnoremap <F4> :NERDTreeToggle<CR>
-" Nerd tree isn't very good when opened on a dir use default instead
-" also helps with vimwiki dir links
-let g:NERDTreeHijackNetrw=0
+" This reverts to default netrw folder opener in vim
+" let g:NERDTreeHijackNetrw=0
 
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
