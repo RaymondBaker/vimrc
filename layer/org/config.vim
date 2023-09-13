@@ -2,7 +2,7 @@ function! MakeDiaryEntry()
   :exec "e " . "~/vimwiki/diary/" . strftime('%Y-%m-%d_diary') . ".md"
   :normal G
   :normal o
-  :put =strftime('*%a %Y-%m-%d %H:%M:%S%z*')
+  :put =strftime('**%a %Y-%m-%d %H:%M:%S%z**')
   " doesn't put you into insertmode for some reason
   :normal o
   :normal o
