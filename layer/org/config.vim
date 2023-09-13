@@ -9,19 +9,22 @@ endfunction
 
 function! AddIndexEntry(indexFile, filename)
   " Generate entry and make filename relative for it
-  let l:indexEntry = "- [" . strftime('%Y-%m-%d') . "](" . substitute(a:filename, s:vimWikiDir, '', '') . ")"
+  echo a:filename
+  echo s:vimWikiDir
+  let l:indexEntry = "- [" . strftime('%a %B %d %Y') . "](" . a:filename . ")"
   :call writefile([l:indexEntry], expand(a:indexFile), "a")
 endfunction
 
 function! MakeDailyLogEntry()
-  let l:filename = s:dailyLogDir . strftime('%Y-%m-%d_worklog') . ".md"
+  let l:filename = strftime('%Y-%m-%d_worklog') . ".md"
+  let l:fileLoc = s:dailyLogDir . l:filename
 
-  if !filereadable(expand(l:filename))
+  if !filereadable(expand(l:fileLoc))
     echo l:filename . " doesn't exist making entry for it"
     :call AddIndexEntry(s:dailyLogDir . "index.md", l:filename)
   endif
 
-  :exec "e " . l:filename
+  :exec "e " . l:fileLoc
   :w
   :normal G
   :normal o
