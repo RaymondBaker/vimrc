@@ -43,6 +43,10 @@ set mousemodel=popup_setpos
 " Unixy pasting
 noremap! <s-insert> <middlemouse>
 
+" Set leader to space
+nnoremap <SPACE> <Nop>
+map <Space> <Leader>
+
 " Disable arrow keys
 nnoremap <up> <nop>
 nnoremap <down> <nop>
