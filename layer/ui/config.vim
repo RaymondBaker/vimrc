@@ -118,3 +118,6 @@ au BufWinEnter * if &buftype == 'terminal' | exec "resize " . &lines | endif
 " Open help in a new tab
 cabbrev help tab help
 cabbrev h tab h
+
+" Search for selected text
+vnoremap / y/\V<C-R>=escape(@",'/\')<CR><CR>
