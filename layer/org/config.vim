@@ -22,7 +22,7 @@ function! MakeDailyLogEntry()
   endif
 
   :exec "e " . l:filename
-  ":w
+  :w
   :normal G
   :normal o
   :put =strftime('**%a %Y-%m-%d %H:%M:%S%z**')
