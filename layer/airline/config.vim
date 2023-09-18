@@ -15,6 +15,9 @@ let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#show_tab_count = 0
 
+" So BufDelete calls, reload the tabline
+autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
+
 " Don't let just anyone take over the statusline
 let g:airline_extensions = ['tabline', 'ctrlp', 'wordcount']
 

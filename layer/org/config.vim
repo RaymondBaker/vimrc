@@ -16,18 +16,26 @@ function! AddIndexEntry(indexFile, filename)
 endfunction
 
 function! MakeDailyLogEntry()
-  let l:filename = strftime('%Y-%m-%d_worklog') . ".md"
+  let l:filename = strftime('%Y-%m-%d_log') . ".md"
   let l:fileLoc = s:dailyLogDir . l:filename
+  let l:workLogExists = filereadable(expand(l:fileLoc))
 
-  if !filereadable(expand(l:fileLoc))
+  if !l:workLogExists
     echo l:filename . " doesn't exist making entry for it"
     :call AddIndexEntry(s:dailyLogDir . "index.md", l:filename)
   endif
 
   :exec "e " . l:fileLoc
-  :w
+  if !l:workLogExists
+    :w
+    "Get rid of default empty line
+    " since :put starts on the next line
+    :normal dd
+  endif
   :normal G
-  :normal o
+  if l:workLogExists
+    :normal o
+  endif
   :put =strftime('**%a %Y-%m-%d %H:%M:%S%z**')
   " doesn't put you into insertmode for some reason
   :normal o
@@ -36,11 +44,40 @@ function! MakeDailyLogEntry()
   :startinsert
 endfunction
 
-function! MakeTodoLink()
-  return s:todoDir . strftime('%Y-%m-%d_todo') . ".md"
+function! MakeNewTodo()
+  " Read contents of old todo and remove checked off items
+  " assumes new todo file is in the current buffer
+  let l:lastTodoFile = substitute(system('ls ' . s:todoDir . ' -t | grep -v index.md | head -n 1'), '\n\+$', '', '')
+  :exec "r " . s:todoDir . l:lastTodoFile
+  " Get rid of extra lines :r Adds and old Header
+  :normal gg
+  :normal dd
+  :normal dd
+  :normal dd
+  :put =strftime('# TODO %a %Y-%m-%d')
+  :normal o
+  " Remove old completed checks
+  :g/\s*-\s\+\[x\]/d
+endfunction
+
+function! MakeTodoEntry()
+  let l:filename = strftime('%Y-%m-%d_todo') . ".md"
+  let l:fileLoc = s:todoDir . l:filename
+  let l:todoFileExists = filereadable(expand(l:fileLoc))
+
+  :exec "e " . l:fileLoc
+  if !l:todoFileExists
+    echo l:filename . " doesn't exist making entry for it"
+    :call AddIndexEntry(s:todoDir . "index.md", l:filename)
+    :call MakeNewTodo()
+    :w
+  endif
+
+  " go to bottom since that where checkmarks are
+  :normal G
 endfunction
 
 noremap <Leader>ww :exec "e " . GetWikiIndexFile()<CR>
-noremap <Leader>wt :exec "e " . MakeTodoLink()<CR>
+noremap <Leader>wt :call MakeTodoEntry()<CR>
 noremap <Leader>wd :call MakeDailyLogEntry()<CR>
 noremap <Leader>wc :bd ~/vimwiki/*<C-a><CR>
