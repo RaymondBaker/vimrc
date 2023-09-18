@@ -57,7 +57,9 @@ function! MakeNewTodo()
   :put =strftime('# TODO %a %Y-%m-%d')
   :normal o
   " Remove old completed checks
-  :g/\s*-\s\+\[x\]/d
+  " :g/\s*-\s\+\[x\]/d
+  " For now do this manually
+  " I think a better approach would be to delete all sub checks if top is done
 endfunction
 
 function! MakeTodoEntry()
