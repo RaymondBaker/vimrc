@@ -41,6 +41,6 @@ function! MakeTodoLink()
 endfunction
 
 noremap <Leader>ww :exec "e " . GetWikiIndexFile()<CR>
-
 noremap <Leader>wt :exec "e " . MakeTodoLink()<CR>
 noremap <Leader>wd :call MakeDailyLogEntry()<CR>
+noremap <Leader>wc :bd ~/vimwiki/*<C-a><CR>
