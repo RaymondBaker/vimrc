@@ -21,4 +21,4 @@ function! ToggleCheckBox()
 endfunction
 
 noremap <buffer> <Leader>tt :call ToggleCheckBox()<CR>
-noremap <buffer> <Leader>mc o<BS>-<Space>[<Space>]<Space>
+noremap <buffer> <Leader>mc o-<Space>[<Space>]<Space>

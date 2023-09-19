@@ -53,8 +53,9 @@ function! MakeNewTodo()
   :normal gg
   :normal dd
   :normal dd
-  :normal dd
   :put =strftime('# TODO %a %Y-%m-%d')
+  :normal gg
+  :normal dd
   :normal o
   " Remove old completed checks
   " :g/\s*-\s\+\[x\]/d
