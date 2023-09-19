@@ -1,5 +1,8 @@
 " use coc-marksman gd to follow links
 ":CocInstall @yaegassy/coc-marksman
+
+" Get this working so links don't need to be exact
+"nmap <buffer> <CR> F[f]gd
 nmap <buffer> <CR> gd
 
 " Make link entry
@@ -22,3 +25,6 @@ endfunction
 
 noremap <buffer> <Leader>tt :call ToggleCheckBox()<CR>
 noremap <buffer> <Leader>mc o-<Space>[<Space>]<Space>
+
+" Align table
+nmap <buffer> <Leader>at :TableFormat<CR>
