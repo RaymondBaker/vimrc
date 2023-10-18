@@ -35,8 +35,10 @@ let g:rainbow_conf =
 
 " Add a hook to patch the colorscheme
 function! FixColorscheme()
-  hi Pmenu guibg=#eee8d5 guifg=#586e75 gui=none
-  hi PmenuSel guibg=#859900 guifg=#586e75 gui=none
+    if (g:colors_name == "gruvbox")
+        hi Pmenu guibg=#eee8d5 guifg=#586e75 gui=none
+        hi PmenuSel guibg=#859900 guifg=#586e75 gui=none
+    endif
 endfunction
 
 augroup fix_colorscheme
@@ -50,6 +52,21 @@ augroup custom_todo
         \ containedin=.*Comment
 augroup END
 hi def link CustomTodo Todo
+
+function ToggleColors()
+    if (g:colors_name == "gruvbox")
+        set background=light
+        silent! colorscheme PaperColor
+        :AirlineTheme papercolor
+    else
+        set background=dark
+        silent! colorscheme gruvbox
+        :AirlineTheme gruvbox
+    endif
+endfunction
+
+
+nnoremap <Leader>tc :call ToggleColors()<CR>
 
 " Set colorscheme and trigger hook
 set background=dark
