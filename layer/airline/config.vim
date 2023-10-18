@@ -1,7 +1,10 @@
 " Always show a helpful statusline
 set laststatus=2
 let g:airline_section_warning = ''
-let g:airline_theme = 'gruvbox'
+
+" This is now handled in the colors config.vim
+"let g:airline_theme = "gruvbox"
+
 let g:airline_exclude_preview = 1
 let g:airline_detect_spelllang = 0
 

@@ -6,7 +6,8 @@ hi Conceal guifg=green ctermfg=green
 set conceallevel=2
 
 " Rainbow operators
-let g:rainbow_active = 1
+" TODO: find colors that work for light mode
+let g:rainbow_active = 0
 let g:rainbow_conf =
 \ {
 \  'guifgs': ['darkorange3', 'seagreen3', 'deepskyblue', 'darkorchid3', 'forestgreen', 'lightblue', 'hotpink', 'mistyrose1'],
@@ -53,15 +54,33 @@ augroup custom_todo
 augroup END
 hi def link CustomTodo Todo
 
-function ToggleColors()
-    if (g:colors_name == "gruvbox")
+function SetTheme(theme_type)
+    if (a:theme_type == "light")
         set background=light
-        silent! colorscheme PaperColor
-        :AirlineTheme papercolor
-    else
+        execute "colorscheme " . g:vim_light_theme
+        if exists(":AirlineTheme")
+            execute ":AirlineTheme " . g:vim_airline_theme_mapping[g:vim_light_theme]
+        else
+            let g:airline_theme = g:vim_airline_theme_mapping[g:vim_light_theme]
+        endif
+    elseif (a:theme_type == "dark")
         set background=dark
-        silent! colorscheme gruvbox
-        :AirlineTheme gruvbox
+        execute "colorscheme " . g:vim_dark_theme
+        if exists(":AirlineTheme")
+            execute ":AirlineTheme " . g:vim_airline_theme_mapping[g:vim_dark_theme]
+        else
+            let g:airline_theme = g:vim_airline_theme_mapping[g:vim_dark_theme]
+        endif
+    else
+        echoerr "SetTheme only supports light and dark as inputs"
+    endif
+endfunction
+
+function ToggleColors()
+    if (g:colors_name == g:vim_dark_theme)
+        call SetTheme("light")
+    else
+        call SetTheme("dark")
     endif
 endfunction
 
@@ -69,8 +88,28 @@ endfunction
 nnoremap <Leader>tc :call ToggleColors()<CR>
 
 " Set colorscheme and trigger hook
-set background=dark
 
 let g:gruvbox_italic=0
 let g:gruvbox_contrast_dark='medium'
-silent! colorscheme gruvbox
+
+" Use this on newer versions of gnome will return prefer-light or prefer-dark
+" gsettings get org.gnome.desktop.interface color-scheme
+"
+let s:system_theme = trim(system("gsettings get org.gnome.desktop.interface gtk-theme"), "'\n")
+let s:system_light_themes = ["HighContrast", "Adwaita"]
+
+let g:vim_light_theme = "PaperColor"
+let g:vim_dark_theme = "gruvbox"
+
+let g:vim_airline_theme_mapping = {
+            \g:vim_light_theme: "papercolor",
+            \g:vim_dark_theme: g:vim_dark_theme,
+            \}
+
+" Default dark
+let g:theme_type = "dark"
+if index(s:system_light_themes, s:system_theme) >= 0  " If item is in the list.
+    let g:theme_type = "light"
+endif
+
+call SetTheme(g:theme_type)
