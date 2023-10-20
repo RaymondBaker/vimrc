@@ -92,12 +92,6 @@ nnoremap <Leader>tc :call ToggleColors()<CR>
 let g:gruvbox_italic=0
 let g:gruvbox_contrast_dark='medium'
 
-" Use this on newer versions of gnome will return prefer-light or prefer-dark
-" gsettings get org.gnome.desktop.interface color-scheme
-"
-let s:system_theme = trim(system("gsettings get org.gnome.desktop.interface gtk-theme"), "'\n")
-let s:system_light_themes = ["HighContrast", "Adwaita"]
-
 let g:vim_light_theme = "PaperColor"
 let g:vim_dark_theme = "gruvbox"
 
@@ -107,9 +101,26 @@ let g:vim_airline_theme_mapping = {
             \}
 
 " Default dark
-let g:theme_type = "dark"
-if index(s:system_light_themes, s:system_theme) >= 0  " If item is in the list.
-    let g:theme_type = "light"
+let s:color_scheme = trim(system("gsettings get org.gnome.desktop.interface color-scheme"), "'\n")
+if v:shell_error
+    "Revert to system theme matching if this gnome doesn't support color-scheme
+    let s:system_theme = trim(system("gsettings get org.gnome.desktop.interface gtk-theme"), "'\n")
+    let s:system_light_themes = ["HighContrast", "Adwaita"]
+
+    let g:theme_type = "dark"
+    if index(s:system_light_themes, s:system_theme) >= 0  " If item is in the list.
+        let g:theme_type = "light"
+    endif
+else
+    if s:color_scheme == "prefer-dark"  " If item is in the list.
+        let g:theme_type = "dark"
+    elseif s:color_scheme == "prefer-light"  " If item is in the list.
+        let g:theme_type = "light"
+    elseif s:color_scheme == "default"  " If item is in the list.
+        let g:theme_type = "light"
+    else
+        echoerr "Gnome color-scheme returned" . s:color_scheme . " we onlt support default, prefer-light and prefer-dark as inputs"
+    endif
 endif
 
 call SetTheme(g:theme_type)
