@@ -1,5 +1,5 @@
 let s:vimWikiDir = "~/vimwiki/docs/"
-let s:dailyLogDir = s:vimWikiDir . "daily_log/"
+let s:dailyLogDir = s:vimWikiDir . "daily-log/"
 let s:todoDir = s:vimWikiDir . "todo/"
 
 function! GetWikiIndexFile()
@@ -16,7 +16,7 @@ function! AddIndexEntry(indexFile, filename)
 endfunction
 
 function! MakeDailyLogEntry()
-  let l:filename = strftime('%Y-%m-%d-log') . ".md"
+  let l:filename = strftime('log-%Y-%m-%d') . ".md"
   let l:fileLoc = s:dailyLogDir . l:filename
   let l:workLogExists = filereadable(expand(l:fileLoc))
 
@@ -64,7 +64,7 @@ function! MakeNewTodo()
 endfunction
 
 function! MakeTodoEntry()
-  let l:filename = strftime('%Y-%m-%d-todo') . ".md"
+  let l:filename = strftime('todo-%Y-%m-%d') . ".md"
   let l:fileLoc = s:todoDir . l:filename
   let l:todoFileExists = filereadable(expand(l:fileLoc))
 
