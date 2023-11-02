@@ -63,25 +63,9 @@ function! MakeNewTodo()
   " For now do this manually
   " I think a better approach would be to delete all sub checks if top is done
 
-  " remove completed checks
-  :normal gg
-  while search('^-\s*\[x\]')
-    :normal dd
-    let l:line = getline('.')
-    let l:line_num = line(".")
-    while match(l:line, '^\s\s*') >= 0
-        :normal dd
-        if l:line_num > line(".")
-            " we're at the end of the file
-            break
-        endif
-        let l:line_num = line(".")
-        let l:line = getline('.')
-    endwhile
-  endwhile
-  :w
-
-  " remove uncompleted checks
+  " remove uncompleted checks for last todo
+  " edit this first so mtime is before the new todo
+  " fixes issues with grabbing the latest todo
   :exec "e " . l:lastTodoFile
   :normal gg
   while search('^-\s*\[\s\]')
@@ -101,50 +85,32 @@ function! MakeNewTodo()
   :w
   :bd
 
-endfunction
-
-function! IndentLevel(lnum)
-    return indent(a:lnum) / &shiftwidth
-endfunction
-
-function! NextNonBlankLine(lnum)
-    let numlines = line('$')
-    let current = a:lnum + 1
-
-    while current <= numlines
-        if getline(current) =~? '\v\S'
-            return current
+  " remove completed checks
+  :normal gg
+  while search('^-\s*\[x\]')
+    :normal dd
+    let l:line = getline('.')
+    let l:line_num = line(".")
+    while match(l:line, '^\s\s*') >= 0
+        :normal dd
+        if l:line_num > line(".")
+            " we're at the end of the file
+            break
         endif
-
-        let current += 1
+        let l:line_num = line(".")
+        let l:line = getline('.')
     endwhile
+  endwhile
+  :w
 
-    return -2
+
 endfunction
 
-" Callback: Fold level <- next line indent
-function! TodoListFoldMethod(lnum)
-    if getline(a:lnum) =~? '\v^\s*$'
-        return '-1'
-    endif
-
-    let this_indent = IndentLevel(a:lnum)
-    let next_indent = IndentLevel(NextNonBlankLine(a:lnum))
-
-    if next_indent == this_indent
-        return this_indent
-    elseif next_indent < this_indent
-        return this_indent
-    elseif next_indent > this_indent
-        return '>' . next_indent
-endfunction
 
 function! MakeTodoEntry()
   let l:filename = strftime('todo-%Y-%m-%d') . ".md"
   let l:fileLoc = s:todoDir . l:filename
   let l:todoFileExists = filereadable(expand(l:fileLoc))
-
-  let g:vim_markdown_folding_disabled = 1
 
   :exec "e " . l:fileLoc
 
@@ -153,10 +119,6 @@ function! MakeTodoEntry()
     :call AddIndexEntry(s:todoDir . "index.md", l:filename)
     :call MakeNewTodo()
   endif
-
-  " TODO: make this autoexec for all md files
-  setlocal foldmethod=expr
-  setlocal foldexpr=TodoListFoldMethod(v:lnum)
 
   " go to bottom since that where checkmarks are
   :normal G
