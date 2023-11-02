@@ -40,18 +40,17 @@ function! TodoListFoldMethod(lnum)
 endfunction
 
 function! SetMarkdownFolding()
-endfunction
-
-function! SetFolding()
     let s:filename=expand('%:t')
     if match(s:filename, 'todo.*\.md') >= 0
+        " TODO folding
         let g:vim_markdown_folding_disabled = 1
         setlocal foldmethod=expr
         setlocal foldexpr=TodoListFoldMethod(v:lnum)
     else
+        " TODO default header folding
         let g:vim_markdown_folding_disabled = 0
     endif
 endfunction
 
 
-autocmd BufEnter * call SetFolding()
+autocmd BufEnter * call SetMarkdownFolding()
