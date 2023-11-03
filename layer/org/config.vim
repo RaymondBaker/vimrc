@@ -127,4 +127,5 @@ endfunction
 
 noremap <Leader>ww :exec "e " . GetWikiIndexFile()<CR>
 noremap <Leader>wt :call MakeTodoEntry()<CR>
+noremap <Leader>wd :call MakeDailyLogEntry()<CR>
 noremap <Leader>wc :bd ~/vimwiki/*<C-a><CR>
