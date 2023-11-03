@@ -48,7 +48,7 @@ function! MakeNewTodo()
   " Read contents of old todo and remove checked off items
   " assumes new todo file is in the current buffer
   " grep -v 'index.md' will remove daily-logs-index.md and todo-index.md from the results
-  let l:lastTodoFile = substitute(system('ls ' . s:todoDir . ' -t | grep -v 'index.md' | head -n 1'), '\n\+$', '', '')
+  let l:lastTodoFile = substitute(system('ls ' . s:todoDir . ' -t | grep -v index.md | head -n 1'), '\n\+$', '', '')
 
   :exec "r " . s:todoDir . l:lastTodoFile
   " Get rid of extra lines :r Adds and old Header
