@@ -22,7 +22,7 @@ function! MakeDailyLogEntry()
 
   if !l:workLogExists
     echo l:filename . " doesn't exist making entry for it"
-    :call AddIndexEntry(s:dailyLogDir . "index.md", l:filename)
+    :call AddIndexEntry(s:dailyLogDir . "daily-logs-index.md", l:filename)
   endif
 
   :exec "e " . l:fileLoc
@@ -117,7 +117,7 @@ function! MakeTodoEntry()
 
   if !l:todoFileExists
     echo l:filename . " doesn't exist making entry for it"
-    :call AddIndexEntry(s:todoDir . "index.md", l:filename)
+    :call AddIndexEntry(s:todoDir . 'todo-index.md', l:filename)
     :call MakeNewTodo()
   endif
 
