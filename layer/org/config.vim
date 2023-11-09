@@ -49,8 +49,9 @@ function! MakeNewTodo()
   " assumes new todo file is in the current buffer
   " grep -v 'index.md' will remove daily-logs-index.md and todo-index.md from the results
   let l:lastTodoFile = substitute(system('ls ' . s:todoDir . ' -t | grep -v index.md | head -n 1'), '\n\+$', '', '')
+  let l:lastTodoFilePath = s:todoDir . l:lastTodoFile
 
-  :exec "r " . s:todoDir . l:lastTodoFile
+  :exec "r " . l:lastTodoFilePath
   " Get rid of extra lines :r Adds and old Header
   :normal gg
   :normal dd
@@ -67,7 +68,7 @@ function! MakeNewTodo()
   " remove uncompleted checks for last todo
   " edit this first so mtime is before the new todo
   " fixes issues with grabbing the latest todo
-  :exec "e " . l:lastTodoFile
+  :exec "e " . l:lastTodoFilePath
   :normal gg
   while search('^-\s*\[\s\]')
     :normal dd
