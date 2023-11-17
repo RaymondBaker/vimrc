@@ -42,7 +42,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-let g:coc_global_extensions = [ 'coc-conjure', 'coc-rls', 'coc-omnisharp', 'coc-fsharp', '@yaegassy/coc-marksman', 'coc-julia', 'coc-jedi', 'coc-tsserver']
+let g:coc_global_extensions = [ 'coc-conjure', 'coc-rls', 'coc-omnisharp', 'coc-fsharp', '@yaegassy/coc-marksman', 'coc-jedi', 'coc-tsserver']
 
 " coc-jedi is for python
 
