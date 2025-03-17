@@ -4,8 +4,26 @@ vim.g.maplocalleader = " "
 local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
+
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
-opt.colorcolumn = "101,101"
+vim.g.clipboard = {
+    name = "Override with xclip",
+    copy = {
+        ["+"] = 'xclip -sel clip',
+        ["*"] = 'xclip',
+    },
+    paste = {
+        ["+"] = (function()
+            return vim.fn.systemlist('xclip -o -sel clip', {''}, 1) -- '1' keeps empty lines
+        end),
+        ["*"] = (function() 
+            return vim.fn.systemlist('xclip -o', {''}, 1)
+        end),
+    },
+    cache_enabled = true
+}
+
+--opt.colorcolumn = "101,101"
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer

@@ -60,7 +60,7 @@ set noshowmode
 set foldmethod=indent
 set nofoldenable
 set foldcolumn=0
-set foldlevelstart=20
+
 
 " UTF8 please
 if has('vim_starting')
@@ -71,8 +71,6 @@ endif
 " Idle time before CursorHold is sent
 set updatetime=1000
 
-" 80 column
-let &colorcolumn="101,101"
 set synmaxcol=128
 
 " Enter in the quickfix window doesn't focus the new buffer.

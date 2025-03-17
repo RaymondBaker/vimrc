@@ -69,4 +69,19 @@ map ,* *<C-O>:%s///gn<CR>
 
 " Use tags, when present
 set tags+=tags;$HOME
+
+" TODO: Port this to lua
+vnoremap / y/\V<C-R>=escape(@",'/\')<CR><CR>
 ]])
+
+--vim.keymap.set('v', '/', function()
+--  local vstart = vim.fn.getpos("'<")
+--
+--  local vend = vim.fn.getpos("'>")
+--
+--  local line_start = vstart[2]
+--  local line_end = vend[2]
+--  -- or use api.nvim_buf_get_lines
+--  local lines = vim.fn.getline(line_start,line_end)
+--end
+--,{ desc = 'Search visual selection' })
