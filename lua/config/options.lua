@@ -16,7 +16,7 @@ vim.g.clipboard = {
         ["+"] = (function()
             return vim.fn.systemlist('xclip -o -sel clip', {''}, 1) -- '1' keeps empty lines
         end),
-        ["*"] = (function() 
+        ["*"] = (function()
             return vim.fn.systemlist('xclip -o', {''}, 1)
         end),
     },
