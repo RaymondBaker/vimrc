@@ -22,10 +22,10 @@ return {
       --
       local opts = { noremap=true, silent=true }
 
-      vim.keymap.set({"n", "v", "i" }, '<M-Right>', '<cmd>lua require("tmux").resize_right()<cr>', opts)
-      vim.keymap.set({"n", "v", "i" }, '<M-Left>', '<cmd>lua require("tmux").resize_left()<cr>', opts)
-      vim.keymap.set({"n", "v", "i" }, '<M-Up>', '<cmd>lua require("tmux").resize_top()<cr>', opts)
-      vim.keymap.set({"n", "v", "i" }, '<M-Down>', '<cmd>lua require("tmux").resize_bottom()<cr>', opts)
+      vim.keymap.set({"n", "v", "i" }, '<M-Right>', '<cmd>lua require("tmux").resize_right(15)<cr>', opts)
+      vim.keymap.set({"n", "v", "i" }, '<M-Left>', '<cmd>lua require("tmux").resize_left(15)<cr>', opts)
+      vim.keymap.set({"n", "v", "i" }, '<M-Up>', '<cmd>lua require("tmux").resize_top(15)<cr>', opts)
+      vim.keymap.set({"n", "v", "i" }, '<M-Down>', '<cmd>lua require("tmux").resize_bottom(15)<cr>', opts)
       -- Navigate
       vim.keymap.set({"n", "v", "i" }, '<M-l>', '<cmd>lua require("tmux").move_right()<cr>', opts)
       vim.keymap.set({"n", "v", "i" }, '<M-h>', '<cmd>lua require("tmux").move_left()<cr>', opts)
