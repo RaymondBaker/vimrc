@@ -44,7 +44,7 @@ return {
       },
       indent = { enable = false, disable = { } },
       context_commentstring = { enable = true, enable_autocmd = false },
-      ignore_install = { "help" },
+      ignore_install = { "help", "org" },
       ensure_installed = {
         "bash",
         "c",
