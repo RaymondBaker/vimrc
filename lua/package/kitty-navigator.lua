@@ -1,1 +1,0 @@
-../package-all/kitty-navigator.lua
