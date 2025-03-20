@@ -1,1 +1,0 @@
-../package-all/tmux.lua
