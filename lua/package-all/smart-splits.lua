@@ -2,9 +2,20 @@ return {
   'mrjones2014/smart-splits.nvim',
   config = function()
 
-    local vertical_amt = 5
-    local horizontal_amt = 15
+    local vertical_amt = 3
+    local horizontal_amt = 5
     local smart_splits = require('smart-splits')
+
+    -- Doesn't ignore neo-tree when resizing
+    --smart_splits.setup({
+    --  ignored_buftypes = {
+    --    'nofile',
+    --    'quickfix',
+    --    'prompt',
+    --    'neo-tree',
+    --  },
+    --  ignored_filetypes = { 'NvimTree' },
+    --})
 
     local function resize(dir)
       local debounce = false
@@ -27,7 +38,7 @@ return {
 
         debounce = true
         local timer = vim.uv.new_timer()
-        timer:start(10, 0, vim.schedule_wrap(function()
+        timer:start(1, 0, vim.schedule_wrap(function()
           debounce = false
         end))
       end

@@ -1,6 +1,5 @@
 return {
   "olimorris/codecompanion.nvim",
-  config = true,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
@@ -12,7 +11,7 @@ return {
           adapter = "granite_32",
         },
         inline = {
-          adapter = "qwen25_coder", -- granite_code
+          adapter = "granite_32", -- granite_code
         },
         agent = {
           adapter = "granite_32",
