@@ -1,11 +1,10 @@
 return {
   'mrjones2014/smart-splits.nvim',
   config = function()
-    local smart_splits = require('smart-splits')
-    vim.keymap.set({"n", "v", "i" }, '<A-Left>', smart_splits.resize_left)
-    vim.keymap.set({"n", "v", "i" }, '<A-Down>', smart_splits.resize_down)
-    vim.keymap.set({"n", "v", "i" }, '<A-Up>', smart_splits.resize_up)
-    vim.keymap.set({"n", "v", "i" }, '<A-Right>', smart_splits.resize_right)
+    vim.keymap.set({"n", "v", "i" }, '<A-Left>',  require('smart-splits').resize_left)
+    vim.keymap.set({"n", "v", "i" }, '<A-Down>',  require('smart-splits').resize_down)
+    vim.keymap.set({"n", "v", "i" }, '<A-Up>',    require('smart-splits').resize_up)
+    vim.keymap.set({"n", "v", "i" }, '<A-Right>', require('smart-splits').resize_right)
     -- moving between splits
     vim.keymap.set({"n", "v", "i" }, '<A-h>', require('smart-splits').move_cursor_left)
     vim.keymap.set({"n", "v", "i" }, '<A-j>', require('smart-splits').move_cursor_down)
