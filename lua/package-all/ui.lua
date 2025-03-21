@@ -20,6 +20,11 @@ return {
         return math.floor(vim.o.columns * 0.33)
       end,
     },
+    config = function ()
+      require("notify").setup({
+        background_colour = "#000000",
+      })
+    end,
     init = function()
       -- when noice is not enabled, install notify on VeryLazy
       local Util = require("config.util")
