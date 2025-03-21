@@ -11,7 +11,7 @@ return {
           ["core.defaults"] = {},
           ["core.concealer"] = {},
           ["core.summary"] = {},
-          --["core.integrations.treesitter"] = {},
+          ["core.integrations.treesitter"] = {},
           ["core.dirman"] = {
             config = {
               workspaces = {
@@ -20,7 +20,7 @@ return {
                 ai_notes = "~/neorg/ai_notes",
                 programming_notes = "~/neorg/programming_notes",
               },
-              default_workspace = "main_notes",
+              default_workspace = "work_notes",
               index = "index.norg", -- The name of the main (root) .norg file
             }
           }

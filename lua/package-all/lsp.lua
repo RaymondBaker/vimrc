@@ -16,11 +16,11 @@ return {
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
-      --{
-      --  "L3MON4D3/LuaSnip",
-      --  version = "<CurrentMajor>.*",
-      --  --build = "make install_jsregexp"
-      --},
+      {
+        "L3MON4D3/LuaSnip",
+        version = "<CurrentMajor>.*",
+        --build = "make install_jsregexp"
+      },
     },
     opts = {
       -- options for vim.diagnostic.config()
