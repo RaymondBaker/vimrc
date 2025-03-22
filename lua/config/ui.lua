@@ -38,10 +38,6 @@ set noerrorbells
 set visualbell t_vb=
 au GuiEnter * set visualbell t_vb=
 
-" Enable mouse
-set mouse=a
-set mousemodel=popup_setpos
-
 " Unixy pasting
 noremap! <s-insert> <middlemouse>
 

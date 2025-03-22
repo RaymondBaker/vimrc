@@ -19,8 +19,10 @@ return {
                 main_notes = "~/neorg/notes",
                 ai_notes = "~/neorg/ai_notes",
                 programming_notes = "~/neorg/programming_notes",
+                book_notes = "~/neorg/book_notes",
+                cooking_notes = "~/neorg/cooking_notes",
               },
-              default_workspace = "work_notes",
+              default_workspace = "ai_notes",
               index = "index.norg", -- The name of the main (root) .norg file
             }
           }

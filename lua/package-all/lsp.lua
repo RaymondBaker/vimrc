@@ -18,7 +18,7 @@ return {
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       {
         "L3MON4D3/LuaSnip",
-        version = "<CurrentMajor>.*",
+        version = "2.3.0",
         --build = "make install_jsregexp"
       },
     },
