@@ -23,6 +23,17 @@ vim.g.clipboard = {
     cache_enabled = true
 }
 
+-- Terminal
+vim.api.nvim_create_autocmd("TermOpen", {
+  --pattern = { "*" },
+  callback = function()
+    --vim.wo.number = false       -- sets number to false in current window
+    -- same as above but more clear
+    vim.opt_local.number = false       -- sets number to false in current window
+    --autocmd TerminalOpen * setlocal nonumber
+  end
+})
+
 --opt.colorcolumn = "101,101"
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 3 -- Hide * markup for bold and italic

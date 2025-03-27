@@ -44,16 +44,16 @@ return {
       end
     end
 
-    vim.keymap.set({"n", "v", "i" }, '<A-Left>',  resize('left'))
-    vim.keymap.set({"n", "v", "i" }, '<A-Down>',  resize('down'))
-    vim.keymap.set({"n", "v", "i" }, '<A-Up>',    resize('up'))
-    vim.keymap.set({"n", "v", "i" }, '<A-Right>', resize('right'))
+    vim.keymap.set({"n", "v", "i", "t" }, '<A-Left>',  resize('left'))
+    vim.keymap.set({"n", "v", "i", "t" }, '<A-Down>',  resize('down'))
+    vim.keymap.set({"n", "v", "i", "t" }, '<A-Up>',    resize('up'))
+    vim.keymap.set({"n", "v", "i", "t" }, '<A-Right>', resize('right'))
     -- moving between splits
-    vim.keymap.set({"n", "v", "i" }, '<A-h>', smart_splits.move_cursor_left)
-    vim.keymap.set({"n", "v", "i" }, '<A-j>', smart_splits.move_cursor_down)
-    vim.keymap.set({"n", "v", "i" }, '<A-k>', smart_splits.move_cursor_up)
-    vim.keymap.set({"n", "v", "i" }, '<A-l>', smart_splits.move_cursor_right)
-    vim.keymap.set({"n", "v", "i" }, '<A-\\>', smart_splits.move_cursor_previous)
+    vim.keymap.set({"n", "v", "i", "t" }, '<A-h>', smart_splits.move_cursor_left)
+    vim.keymap.set({"n", "v", "i", "t" }, '<A-j>', smart_splits.move_cursor_down)
+    vim.keymap.set({"n", "v", "i", "t" }, '<A-k>', smart_splits.move_cursor_up)
+    vim.keymap.set({"n", "v", "i", "t" }, '<A-l>', smart_splits.move_cursor_right)
+    vim.keymap.set({"n", "v", "i", "t" }, '<A-\\>', smart_splits.move_cursor_previous)
     -- swapping buffers between windows
     vim.keymap.set({"n", "v"}, '<leader><leader>h', smart_splits.swap_buf_left)
     vim.keymap.set({"n", "v"}, '<leader><leader>j', smart_splits.swap_buf_down)

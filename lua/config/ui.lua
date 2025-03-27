@@ -24,6 +24,13 @@ nnoremap <silent> <C-h> :tabp<CR>
 nnoremap <silent> <C-j> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <C-k> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
+" GUI Splits
+nnoremap <silent> <leader>- :split<CR>
+nnoremap <silent> <leader>\ :vsplit<CR>
+nnoremap <leader>ws <nop>
+nnoremap <down>wv <nop>
+
+
 " Allow a lot of tabs to be opened by -p
 set tabpagemax=50
 
