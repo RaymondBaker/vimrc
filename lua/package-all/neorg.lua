@@ -12,6 +12,12 @@ return {
           ["core.concealer"] = {},
           ["core.summary"] = {},
           ["core.integrations.treesitter"] = {},
+          ["core.integrations.nvim-cmp"] = {},
+          ["core.completion"] = {
+            config = {
+              engine = "nvim-cmp"
+            }
+          },
           ["core.dirman"] = {
             config = {
               workspaces = {
