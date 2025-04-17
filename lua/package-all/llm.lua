@@ -1,3 +1,7 @@
+-- TODO:  https://codecompanion.olimorris.dev/usage/chat-buffer/#keymaps
+-- unbind <C-c>
+-- bind q to <C-c> (ctrl + c)
+
 return {
   "olimorris/codecompanion.nvim",
   dependencies = {
@@ -50,7 +54,6 @@ return {
       end
     end
 
-
     local group = vim.api.nvim_create_augroup("CodeCompanionFidgetHooks", {})
 
     vim.api.nvim_create_autocmd({ "User" }, {
@@ -78,6 +81,14 @@ return {
     require("codecompanion").setup({
       strategies = {
         chat = {
+          keymaps = {
+            close = {
+              modes = {},
+            },
+            stop = {
+              modes = { n = "<C-c>", i = "<C-c>" },
+            }
+          },
           adapter = "granite_33",
         },
         inline = {

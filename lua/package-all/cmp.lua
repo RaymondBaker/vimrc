@@ -1,9 +1,15 @@
 
+-- Run :CmpStatus to see what sources are being used
+
 return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "L3MON4D3/LuaSnip",
+      {
+        "L3MON4D3/LuaSnip",
+	      version = "v2.*",
+	      build = "make install_jsregexp"
+      },
     },
     config = function()
       local cmp = require('cmp')
