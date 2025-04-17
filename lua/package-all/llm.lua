@@ -1,7 +1,3 @@
--- TODO:  https://codecompanion.olimorris.dev/usage/chat-buffer/#keymaps
--- unbind <C-c>
--- bind q to <C-c> (ctrl + c)
-
 return {
   "olimorris/codecompanion.nvim",
   dependencies = {
@@ -99,54 +95,6 @@ return {
         },
       },
       adapters = {
-        granite_code = function()
-          return require("codecompanion.adapters").extend("ollama", {
-            name = "granite_code", -- Give this adapter a different name to differentiate it from the default ollama adapter
-            schema = {
-              model = {
-                default = "granite-code:8b",
-              },
-              num_ctx = {
-                default = 16384,
-              },
-              num_predict = {
-                default = -1,
-              },
-            },
-          })
-        end,
-        qwen25_coder = function()
-          return require("codecompanion.adapters").extend("ollama", {
-            name = "qwen25_coder", -- Give this adapter a different name to differentiate it from the default ollama adapter
-            schema = {
-              model = {
-                default = "qwen2.5-coder",
-              },
-              num_ctx = {
-                default = 16384,
-              },
-              num_predict = {
-                default = -1,
-              },
-            },
-          })
-        end,
-        starcoder2 = function()
-          return require("codecompanion.adapters").extend("ollama", {
-            name = "starcoder2", -- Give this adapter a different name to differentiate it from the default ollama adapter
-            schema = {
-              model = {
-                default = "starcoder2:7b",
-              },
-              num_ctx = {
-                default = 16384,
-              },
-              num_predict = {
-                default = -1,
-              },
-            },
-          })
-        end,
         granite_33 = function()
           return require("codecompanion.adapters").extend("ollama", {
             name = "granite_33", -- Give this adapter a different name to differentiate it from the default ollama adapter
