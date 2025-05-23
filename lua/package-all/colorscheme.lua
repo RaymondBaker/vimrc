@@ -1,16 +1,30 @@
 return {
   { "vim-scripts/ebnf.vim" },
   {
-    "ellisonleao/gruvbox.nvim",
+    "zaldih/themery.nvim",
+    lazy = false,
     config = function()
-      --vim.cmd([[
-      --  let g:gruvbox_contrast_light = 'hard'
-      --  autocmd ColorScheme * highlight Normal guibg=#FFFFFF
-      --  set background=light
-      --  set nocursorline
-      --]])
-      --vim.opt.scrolloff = 0
-      vim.cmd.colorscheme("gruvbox")
+      require("themery").setup({
+        themes = {
+        "catppuccin-latte", "catppuccin-frappe", "catppuccin-macchiato", "catppuccin-mocha",
+        {
+          name = "Gruvbox dark",
+          colorscheme = "gruvbox",
+          before = [[
+          vim.opt.background = "dark"
+          ]],
+        },
+        {
+          name = "Gruvbox light",
+          colorscheme = "gruvbox",
+          before = [[
+          vim.opt.background = "light"
+          ]],
+          --after = [[-- Same as before, but after if you need it]]
+        }},
+      })
     end
   },
+  { "ellisonleao/gruvbox.nvim" },
+  { "catppuccin/nvim" }
 }

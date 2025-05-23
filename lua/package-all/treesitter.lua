@@ -55,6 +55,7 @@ return {
         "javascript",
         "json",
         "lua",
+        "ruby",
         "markdown",
         "markdown_inline",
         "python",
@@ -66,6 +67,7 @@ return {
         "vim",
         "yaml",
         "sql",
+        "nginx",
       },
       incremental_selection = {
         enable = true,
