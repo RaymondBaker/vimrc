@@ -68,6 +68,7 @@ return {
         "yaml",
         "sql",
         "nginx",
+        "julia",
       },
       incremental_selection = {
         enable = true,
