@@ -112,6 +112,13 @@ return {
         capabilities = capabilities,
       }
 
+      lspconfig.ruby_lsp.setup {
+        init_options = {
+          formatter = 'standard',
+          linters = { 'standard' },
+        },
+      }
+
       lspconfig.ruff.setup {
         on_attach = on_attach,
         capabilities = capabilities,

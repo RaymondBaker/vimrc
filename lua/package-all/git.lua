@@ -1,8 +1,5 @@
 return {
   {
-    "tpope/vim-fugitive"
-  },
-  {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",         -- required
