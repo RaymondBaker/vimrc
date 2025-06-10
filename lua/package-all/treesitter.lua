@@ -69,6 +69,7 @@ return {
         "sql",
         "nginx",
         "julia",
+        "scala",
       },
       incremental_selection = {
         enable = true,
