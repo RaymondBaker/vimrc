@@ -16,11 +16,11 @@ return {
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
-      --{
-      --  "L3MON4D3/LuaSnip",
-      --  version = "2.3.0",
-      --  --build = "make install_jsregexp"
-      --},
+      {
+        "L3MON4D3/LuaSnip",
+        version = "2.3.0",
+        build = "make install_jsregexp"
+      },
     },
     opts = {
       -- options for vim.diagnostic.config()
@@ -236,8 +236,11 @@ return {
     ft = { "scala", "sbt", "java" },
     opts = function()
       local metals_config = require("metals").bare_config()
+
+      metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
       metals_config.on_attach = function(client, bufnr)
         -- your on_attach function
+        require("metals").setup_dap()
       end
 
       return metals_config
@@ -245,6 +248,8 @@ return {
     config = function(self, metals_config)
       local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
       metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+      --open telescope metals prompt
+      --require("telescope").extensions.metals.commands()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = self.ft,
         callback = function()
