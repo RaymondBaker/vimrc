@@ -5,6 +5,10 @@ local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
 
+-- disable netrw for nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 vim.g.clipboard = {
     name = "Override with xclip",
